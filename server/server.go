@@ -6,11 +6,11 @@ import (
 	"github.com/sderohan/go-auth-server/pkg/config"
 )
 
-type Server struct {
+type server struct {
 	Handler http.Handler
 }
 
-func (srv Server) Start() error {
+func (srv server) Start() error {
 
 	// get the server config
 	srvConfig := config.GetServerConfig()
@@ -23,4 +23,10 @@ func (srv Server) Start() error {
 	}
 
 	return server.ListenAndServe()
+}
+
+func NewServer(handler http.Handler) server {
+	return server{
+		Handler: handler,
+	}
 }

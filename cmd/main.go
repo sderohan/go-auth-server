@@ -10,9 +10,9 @@ import (
 
 func main() {
 	config.InitConfigs()
-	server := server.Server{
-		Handler: routes.InitRoutes(),
-	}
+	server := server.NewServer(
+		routes.InitRoutes(),
+	)
 	log.Println("Server listening on", config.GetServerConfig().Address)
 	log.Fatal(server.Start())
 }
