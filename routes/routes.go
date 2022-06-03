@@ -1,17 +1,14 @@
 package routes
 
 import (
-	"net/http"
-
 	"github.com/gorilla/mux"
+	"github.com/sderohan/go-auth-server/middleware/handler"
 )
 
-var notImplemented = func(w http.ResponseWriter, r *http.Request) {}
-
-func InitRoutes() *mux.Router {
+func InitRoutes(reqHandler handler.IAuth) *mux.Router {
 	rts := mux.NewRouter()
 	v1 := rts.PathPrefix("/v1").Subrouter()
-	v1.HandleFunc("/getToken", notImplemented)
-	v1.HandleFunc("/validateToken", notImplemented)
+	v1.HandleFunc("/authUser", reqHandler.AuthenticateUser)
+	v1.HandleFunc("/validateToken", reqHandler.ValidateToken)
 	return rts
 }

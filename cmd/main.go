@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 
+	"github.com/sderohan/go-auth-server/middleware/handler"
 	"github.com/sderohan/go-auth-server/pkg/config"
 	"github.com/sderohan/go-auth-server/routes"
 	"github.com/sderohan/go-auth-server/server"
@@ -10,8 +11,9 @@ import (
 
 func main() {
 	config.InitConfigs()
+	requestHandler := handler.NewAuthHandler()
 	server := server.NewServer(
-		routes.InitRoutes(),
+		routes.InitRoutes(requestHandler),
 	)
 	log.Println("Server listening on", config.GetServerConfig().Address)
 	log.Fatal(server.Start())

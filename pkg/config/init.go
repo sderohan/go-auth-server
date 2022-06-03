@@ -4,7 +4,7 @@ import (
 	"github.com/sderohan/go-auth-server/pkg/utils"
 )
 
-func init() {
+func LoadConfigFile() {
 	var configFile string = "application"
 	utils.SetConfigFileName(configFile)
 	utils.SetConfigFileType("env")
@@ -13,5 +13,6 @@ func init() {
 }
 
 func InitConfigs() {
+	LoadConfigFile()
 	initServerConfig()
 }
