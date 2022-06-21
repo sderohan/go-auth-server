@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/sderohan/go-auth-server/models"
+	"github.com/sderohan/go-auth-server/pkg/models"
 )
 
 type JWTManager struct {

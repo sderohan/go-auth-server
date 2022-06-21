@@ -23,16 +23,11 @@ require (
 )
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
-	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/gorilla/mux v1.8.0
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/spf13/viper v1.12.0
 	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4 // indirect
-)
-
-require (
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
-	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 )
