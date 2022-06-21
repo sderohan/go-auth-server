@@ -22,6 +22,3 @@ go.work
 
 # vscode auto generated folder
 .vscode
-
-# env file
-application.env
