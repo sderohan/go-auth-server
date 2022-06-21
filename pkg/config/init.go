@@ -15,4 +15,5 @@ func loadConfigFile() {
 func InitConfigs() {
 	loadConfigFile()
 	initServerConfig()
+	initJWTConfig()
 }
