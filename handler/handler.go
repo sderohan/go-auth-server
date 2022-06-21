@@ -5,24 +5,24 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/sderohan/go-auth-server/api/validator"
 	"github.com/sderohan/go-auth-server/pkg/models"
+	"github.com/sderohan/go-auth-server/pkg/validator"
 )
 
 type IAuthHandler interface {
-	RegisterUser(w http.ResponseWriter, r *http.Request)
-	AuthenticateUser(w http.ResponseWriter, r *http.Request)
-	ValidateToken(w http.ResponseWriter, r *http.Request)
+	SignIn(w http.ResponseWriter, r *http.Request)
+	SingOut(w http.ResponseWriter, r *http.Request)
+	Validate(w http.ResponseWriter, r *http.Request)
 }
 
 type AuthHandler struct {
 }
 
-func (auth AuthHandler) RegisterUser(w http.ResponseWriter, r *http.Request) {
+func (auth AuthHandler) SignIn(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "User registration")
 }
 
-func (auth AuthHandler) AuthenticateUser(w http.ResponseWriter, r *http.Request) {
+func (auth AuthHandler) SingOut(w http.ResponseWriter, r *http.Request) {
 	var request models.AuthRequest
 	err := json.NewDecoder(r.Body).Decode(&request)
 	defer r.Body.Close()
@@ -39,7 +39,7 @@ func (auth AuthHandler) AuthenticateUser(w http.ResponseWriter, r *http.Request)
 	json.NewEncoder(w).Encode(request)
 }
 
-func (auth AuthHandler) ValidateToken(w http.ResponseWriter, r *http.Request) {
+func (auth AuthHandler) Validate(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "token validation")
 }
 

@@ -2,14 +2,14 @@ package routes
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/sderohan/go-auth-server/middleware/handler"
+	"github.com/sderohan/go-auth-server/handler"
 )
 
 func InitRoutes(reqHandler handler.IAuthHandler) *mux.Router {
 	rts := mux.NewRouter()
 	v1 := rts.PathPrefix("/v1").Subrouter()
-	v1.HandleFunc("/register", reqHandler.RegisterUser).Methods("POST")
-	v1.HandleFunc("/generate-token", reqHandler.AuthenticateUser).Methods("POST")
-	v1.HandleFunc("/validate-token", reqHandler.ValidateToken).Methods("POST")
+	v1.HandleFunc("/sign-in", reqHandler.SignIn).Methods("POST")
+	v1.HandleFunc("/sign-out", reqHandler.SingOut).Methods("POST")
+	v1.HandleFunc("/validate", reqHandler.Validate).Methods("POST")
 	return rts
 }

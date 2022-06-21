@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/sderohan/go-auth-server/middleware/handler"
+	"github.com/sderohan/go-auth-server/handler"
 	"github.com/sderohan/go-auth-server/pkg/config"
 	"github.com/sderohan/go-auth-server/routes"
 	"github.com/sderohan/go-auth-server/server"
