@@ -2,6 +2,9 @@ package handler
 
 import (
 	"net/http"
+
+	"github.com/sderohan/go-auth-server/pkg/config"
+	"github.com/sderohan/go-auth-server/service/jwtauth"
 )
 
 type IAuthHandler interface {
@@ -11,6 +14,7 @@ type IAuthHandler interface {
 }
 
 type AuthHandler struct {
+	jwtAuthService *jwtauth.JWTManager
 }
 
 func (auth AuthHandler) SignIn(w http.ResponseWriter, r *http.Request) {
@@ -23,5 +27,7 @@ func (auth AuthHandler) Validate(w http.ResponseWriter, r *http.Request) {
 }
 
 func NewAuthHandler() IAuthHandler {
-	return AuthHandler{}
+	return AuthHandler{
+		jwtAuthService: jwtauth.NewJWTManager(config.GetJWTConfig().SecretKey, config.GetJWTConfig().ExpiryDuration),
+	}
 }
