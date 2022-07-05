@@ -4,6 +4,7 @@ Authentication server
 #TODO 
 Authentication server to be written in golang
 
+#CI
 ![example workflow](https://github.com/sderohan/go-auth-server/actions/workflows/pipeline.yml/badge.svg)
 
 
