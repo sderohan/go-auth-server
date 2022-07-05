@@ -4,10 +4,10 @@ Authentication server
 #TODO 
 Authentication server to be written in golang
 
-#CI
+# CI
 ![example workflow](https://github.com/sderohan/go-auth-server/actions/workflows/pipeline.yml/badge.svg)
 
-
+# Code Quality
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=sderohan_go-auth-server) <br/>
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sderohan_go-auth-server&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sderohan_go-auth-server)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=sderohan_go-auth-server&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=sderohan_go-auth-server)
