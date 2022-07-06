@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	"github.com/sderohan/go-auth-server/pkg/constants"
 	"github.com/sderohan/go-auth-server/pkg/models"
 	"github.com/sderohan/go-auth-server/pkg/validator"
 )
@@ -52,12 +53,22 @@ func ValidateRequestContent(reqModel *models.AuthRequest) []*validator.IError {
 
 func WriteResponse(w http.ResponseWriter, data interface{}, contentTypeKey, contentTypeValue string, statusCode uint, success bool) {
 	setContentType(w, contentTypeKey, contentTypeValue)
-	setStatusCode(w, int(statusCode))
 	response := getRespnse(data, statusCode, success)
-	rawResponse, _ := MarshalResponse(response)
+	rawResponse, err := MarshalResponse(response)
+	if err != nil {
+		handleMarshalErrorAndRespondToClientRequest(w)
+		return
+	}
+	setStatusCode(w, int(statusCode))
 	w.Write(rawResponse)
 }
 
 func MarshalResponse(model interface{}) ([]byte, error) {
 	return json.Marshal(model)
+}
+
+func handleMarshalErrorAndRespondToClientRequest(w http.ResponseWriter) {
+	rawResponse, _ := MarshalResponse(constants.REQUEST_ERROR)
+	setStatusCode(w, constants.INTERNAL_SERVER_ERROR)
+	w.Write(rawResponse)
 }

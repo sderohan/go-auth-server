@@ -8,7 +8,11 @@ const (
 )
 
 // MESSAGES
+// VIPHER
 const CONFIG_KEY_NOT_SET = "Key: %s is not set"
+
+// HTTP HELPER
+const REQUEST_ERROR = "error occured while processing the request, please retry!"
 
 // HTTP DATA CONTENT
 const (

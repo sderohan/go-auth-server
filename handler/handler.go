@@ -50,7 +50,7 @@ func (auth AuthHandler) SignIn(w http.ResponseWriter, req *http.Request) {
 		Role:     user.Role,
 		Token:    token,
 	}
-	utils.WriteResponse(w, tokenResponse, constants.ContentTypeKey, constants.ContentTypeValue, constants.SUCCESS, false)
+	utils.WriteResponse(w, tokenResponse, constants.ContentTypeKey, constants.ContentTypeValue, constants.SUCCESS, true)
 }
 
 func (auth AuthHandler) SignOut(w http.ResponseWriter, r *http.Request) {
